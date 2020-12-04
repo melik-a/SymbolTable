@@ -2,4 +2,5 @@
 Debug/
 *.vcxproj*
 *.sln
+*.obj
 SymbolTable/Debug

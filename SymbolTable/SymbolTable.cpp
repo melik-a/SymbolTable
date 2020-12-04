@@ -3,15 +3,37 @@
 
 #include <iostream>
 #include "HashMap.h"
+#include "Pair.h"
+#include "ListTable.h"
 #include <string>
+#include <forward_list>
+
 
 int main()
 {
-	const std::string a = "_first_pair_";
-	std::string b = "_second_pair_";
-	Pair<std::string, std::string> pair(a, b);
-	pair.getPair();
-    std::cout << "Hello World!\n";
+	std::forward_list<int> l;
+	setlocale(LC_ALL, "RUS");
+	
+
+	LinkedList melik;
+	melik.append("hpesh");
+	melik.append("dnar");
+	melik.append("heb");
+	melik.append("10");
+	melik.append("20");
+	melik.append("30");
+	std::cout << "empty = " << melik.empty() << std::endl;
+
+	Node* node = melik.search("20");
+
+	node->key = "poluchilos";
+
+	melik.remove();
+
+	melik.clear();
+
+
+	system("pause");
 	return 0;
 }
 
