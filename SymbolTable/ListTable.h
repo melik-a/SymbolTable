@@ -6,17 +6,10 @@ struct Node
 	std::string key;
 	Node* next;
 
-	Node() :
-		next(nullptr) {}
-
-	Node(const std::string& n_key) :
-		key(n_key), next(nullptr) {}
-
-	Node(std::string&& n_key) :
-		key(n_key), next(nullptr) {}
-	
-	Node(std::string& n_key) : 
-		key(n_key), next(nullptr) {}
+	Node();
+	Node(const std::string& n_key);
+	Node(std::string&& n_key);
+	Node(std::string& n_key);
 };
 
 

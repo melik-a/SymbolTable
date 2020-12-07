@@ -1,8 +1,21 @@
 #include "ListTable.h"
 
 
+Node::Node() :
+	next(nullptr) {}
+
+Node::Node(const std::string& n_key) :
+	key(n_key), next(nullptr) {}
+
+Node::Node(std::string&& n_key) :
+	key(n_key), next(nullptr) {}
+
+Node::Node(std::string& n_key) :
+	key(n_key), next(nullptr) {}
+
+
 LinkedList::LinkedList() :
-	head(nullptr) {}
+	head(nullptr), size(0) {}
 
 
 LinkedList::~LinkedList()
@@ -16,6 +29,7 @@ void LinkedList::clear()
 {
 	while (head)
 		remove();
+	size = 0;
 }
 
 
