@@ -9,33 +9,25 @@
 #include <forward_list>
 #include <unordered_map>
 #include "Hash.h"
+#include <typeinfo>
+
+
+void hash_test();
+void hash_map_test();
+
 
 int main()
 {
-	std::forward_list<int> l;
 	setlocale(LC_ALL, "RUS");
-	//srand(time(NULL));
-	//HashMap<std::string, std::string> my_map;
-
-	std::string m = "melik";
+	//hash_map_test();
+	HashMap<int, double> map;
+	std::cout << map;
+	int i;
+	std::string s;
+	double d;
 	
-	Hash<std::string> my_hash;
-	size_t h = my_hash(m);
-	std::cout << "hash = " << h << std::endl;
-	std::cout << "hash = " << h << std::endl;
-	std::cout << "hash = " << h << std::endl;
-	std::cout << "hash = " << h << std::endl;
-	
-	std::cout << "sec_hash = " << my_hash("kilem") << std::endl;
-	std::cout << "int_hash = " << Hash<int>{}(30) << std::endl;
-	std::cout << "char_hash = " << Hash<char>{}('a') << std::endl;
-	/*std::cout << "hash = " << std::hash<std::string>{}(m) << std::endl;
-	std::cout << "hash = " << std::hash<std::string>{}(m) % 222 << std::endl;
 
-	std::cout << "hash = " << std::hash<std::string>{}("kilem") << std::endl;*/
-
-
-
+	std::pair<int, double> my_pair(i,d);
 
 	system("pause");
 	return 0;
