@@ -15,19 +15,14 @@
 void hash_test();
 void hash_map_test();
 
+void testingConstructors();
+
 
 int main()
 {
 	setlocale(LC_ALL, "RUS");
-	//hash_map_test();
-	HashMap<int, double> map;
-	std::cout << map;
-	int i;
-	std::string s;
-	double d;
 	
-
-	std::pair<int, double> my_pair(i,d);
+	hash_map_test();
 
 	system("pause");
 	return 0;
