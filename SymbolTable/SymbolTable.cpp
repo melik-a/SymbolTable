@@ -13,13 +13,16 @@
 
 
 void hash_test();
-void hash_map_test();
-
+void hash_map_general_test();
+void hash_map_load_test();
 
 int main()
 {
 	setlocale(LC_ALL, "RUS");
-	//hash_map_test();
+	//hash_map_general_test();
+	hash_map_load_test();
+
+
 	HashMap<int, double> map;
 	std::cout << map;
 	int i;

@@ -5,16 +5,22 @@
 #include "Hash.h"
 #include <cassert>
 
+/***  
+ *** this implementation has a large drawback - std::pair initializes pair with zero values 
+ *** (std::string with "", int with 0, double with 0.0 and so on)
+ *** that makes some trouble to inserting new pair or searching,
+ *** because all pairs not empty by default
+ ***/
+
 template <typename K, typename V>
 struct HashMap
 {
-	/*HashMap() : 
-		_size(200), _mass(new std::pair<K, V>[200]) {}*/
+	HashMap() : 
+		_size(200), _mass(new std::pair<K, V>[200]) {}
 	
-
-	/*HashMap(size_t size) : 
-		_size(size), _mass(new std::pair<K, V>[size]) {}*/
-
+	HashMap(size_t size) : 
+		_size(size), _mass(new std::pair<K, V>[size]) {}
+	
 	~HashMap()
 	{
 		delete[] _mass;
@@ -46,7 +52,7 @@ struct HashMap
 
 	private:
 		size_t _size;
-		std::pair <K, V> _mass[20];
+		std::pair <K, V>* _mass;
 		size_t _number_of_entries{};
 		int _last_num_comparisons{};
 

@@ -13,7 +13,7 @@ struct Hash
 		size_t hash = 0;
 		try
 		{
-			hash = (size_t)key;
+			hash = (size_t) key & 0x07FFFFFFF;
 			hash = hash * PRIME_1 ^ PRIME_2;
 		}
 		catch (...)

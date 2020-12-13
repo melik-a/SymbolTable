@@ -4,11 +4,14 @@
 Node::Node() :
 	next(nullptr) {}
 
+
 Node::Node(const std::string& n_key) :
 	key(n_key), next(nullptr) {}
 
+
 Node::Node(std::string&& n_key) :
 	key(n_key), next(nullptr) {}
+
 
 Node::Node(std::string& n_key) :
 	key(n_key), next(nullptr) {}
@@ -59,7 +62,6 @@ Node* LinkedList::search(std::string& s_key)
 }
 
 
-
 Node* LinkedList::search(std::string&& s_key)
 {
 	Node* node = head;
@@ -81,6 +83,7 @@ void LinkedList::append(const std::string& new_key)
 	size += 1;
 }
 
+
 void LinkedList::append(std::string&& new_key)
 {
 	Node* node = new Node(new_key);
@@ -88,6 +91,7 @@ void LinkedList::append(std::string&& new_key)
 	this->head = node;
 	size += 1;
 }
+
 
 void LinkedList::append(std::string& new_key)
 {
@@ -109,6 +113,7 @@ void LinkedList::remove()
 	}
 }
 
+
 size_t LinkedList::get_max_size() const noexcept
 {
 	return max_size;
@@ -119,6 +124,7 @@ size_t LinkedList::get_size()
 {
 	return head ? 0 : size;
 }
+
 
 bool LinkedList::empty()
 {

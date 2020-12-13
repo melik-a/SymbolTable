@@ -1,6 +1,6 @@
 #include "HashMap.h"
 
-void hash_map_test()
+void hash_map_general_test()
 {
 	// initializing check
 	HashMap<std::string, std::string> table;
@@ -52,4 +52,23 @@ void hash_map_test()
 	// check operator << and print_all_keys
 	std::cout << table;
 	table.print_all_keys();
+}
+
+
+void hash_map_load_test()
+{
+	HashMap<std::string, std::string> map(5);
+
+	map.insert("one", "1");
+	map.insert("two", "2");
+	map.insert("three", "3");
+	map.insert("four", "4");
+	map.insert("five", "5");
+
+	map.insert("six", "6");
+
+	map.remove_pair("three");
+	map.remove_pair("two");
+
+	map.search_pair("four");
 }
