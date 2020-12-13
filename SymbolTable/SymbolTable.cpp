@@ -17,6 +17,9 @@ void hash_map_general_test();
 void hash_map_load_test();
 void list_test();
 
+void testingConstructors();
+
+
 int main()
 {
 	setlocale(LC_ALL, "RUS");
@@ -34,6 +37,7 @@ int main()
 	
 
 	std::pair<int, double> my_pair(i,d);*/
+
 
 	system("pause");
 	return 0;
