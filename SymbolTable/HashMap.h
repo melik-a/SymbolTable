@@ -15,10 +15,10 @@
 template <typename K, typename V>
 struct HashMap
 {
-	HashMap() : 
+	explicit HashMap() : 
 		_size(200), _mass(new std::pair<K, V>[200]) {}
 	
-	HashMap(size_t size) : 
+	explicit HashMap(size_t size) : 
 		_size(size), _mass(new std::pair<K, V>[size]) {}
 	
 	~HashMap()
@@ -54,7 +54,7 @@ struct HashMap
 		size_t _size;
 		std::pair <K, V>* _mass;
 		size_t _number_of_entries{};
-		int _last_num_comparisons{};
+		size_t _last_num_comparisons{};
 
 		size_t hash(K key) const;
 		size_t simple_rehash(K key, size_t bias) const;
@@ -77,7 +77,7 @@ std::ostream& operator << (std::ostream& os, const HashMap<K, V>& table)
 template <typename K, typename V>
 const std::pair<K, V>& HashMap<K,V>::operator[](size_t index) const
 {
-	assert(index < _size, "index out of bound");
+	assert(index < _size);
 	return _mass[index];
 }
 
@@ -163,7 +163,7 @@ void HashMap<K, V>::print_all_keys() const
 		return;
 	}
 	std::cout << "\n{";
-	for (int i = 0; i < _size; i++)
+	for (size_t i = 0; i < _size; i++)
 	{
 		std::cout << _mass[i].first << ", ";
 	}
@@ -179,7 +179,7 @@ void HashMap<K,V>::print_all_values() const
 		return;
 	}
 	std::cout << "\n{";
-	for (int i = 0; i < _size; i++)
+	for (size_t i = 0; i < _size; i++)
 	{
 		std::cout << _mass[i].second << ", ";
 	}
