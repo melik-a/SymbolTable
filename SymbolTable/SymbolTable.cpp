@@ -15,22 +15,25 @@
 void hash_test();
 void hash_map_general_test();
 void hash_map_load_test();
+void list_test();
 
 int main()
 {
 	setlocale(LC_ALL, "RUS");
 	//hash_map_general_test();
-	hash_map_load_test();
+	//hash_map_load_test();
 
 
-	HashMap<int, double> map;
+	list_test();
+
+	/*HashMap<int, double> map;
 	std::cout << map;
 	int i;
 	std::string s;
 	double d;
 	
 
-	std::pair<int, double> my_pair(i,d);
+	std::pair<int, double> my_pair(i,d);*/
 
 	system("pause");
 	return 0;
