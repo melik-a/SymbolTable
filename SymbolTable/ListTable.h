@@ -1,6 +1,7 @@
 #pragma once
-#include <string>
+#include <iostream>
 #include "Node.h"
+
 
 template <typename N, typename I>
 struct LinkedList
@@ -28,6 +29,8 @@ struct LinkedList
 	const Node<N, I>* search(const N& s_name);
 	const Node<N, I>* search(N&& s_name);
 
+	const Node<N, I>* front() const;
+
 	void print() const;
 
 	bool empty() const;
@@ -47,14 +50,15 @@ struct LinkedList
 template <typename N, typename I>
 std::ostream& operator<<(std::ostream& os, const LinkedList<N, I>& list)
 {
-	Node<N, I>* node = list._head;
-	os << "{ ";
+	auto node = list.front();
 	while (node)
 	{
-		os << node->_name << " - " << node->_info << " ";
+		os << "{" << node->_name << " - " << node->_info << "}";
 		node = node->_next;
+		if (node)
+			std::cout << " -> ";
 	}
-	os << "}\n";
+	return os;
 }
 
 
@@ -68,7 +72,14 @@ const Node<N, I>* LinkedList<N, I>::operator[](const N& elem)
 template <typename N, typename I>
 const Node<N, I>* LinkedList<N, I>::operator[](N&& elem)
 {
-	return this->search(elem);
+	return this->search(std::move(elem));
+}
+
+
+template <typename N, typename I>
+const Node<N, I>* LinkedList<N, I>::front() const
+{
+	return _head;
 }
 
 
@@ -76,13 +87,14 @@ template <typename N, typename I>
 void LinkedList<N, I>::print() const
 {
 	Node<N, I>* node = _head;
-	std::cout << "{ ";
 	while (node)
 	{
-		std::cout << "{" << node->_name << " - " << node->_info << "} ";
+		std::cout << "{" << node->_name << " - " << node->_info << "}";
 		node = node->_next;
+		if (node)
+			std::cout << " -> ";
 	}
-	std::cout << "}\n";
+	std::cout << std::endl;
 }
 
 
@@ -172,7 +184,7 @@ void LinkedList<N, I>::push_front(const Node<N, I>& new_node)
 template <typename N, typename I>
 void LinkedList<N, I>::push_front(Node<N, I>&& new_node)
 {
-	Node<N, I>* node = new Node<N, I>(new_node);
+	Node<N, I>* node = new Node<N, I>(std::move(new_node));
 	node->_next = this->_head;
 	this->_head = node;
 	_size += 1;
@@ -192,7 +204,7 @@ void LinkedList<N, I>::push_front(const N& name, const I& info)
 template <typename N, typename I>
 void LinkedList<N, I>::push_front(N&& name, I&& info)
 {
-	Node<N, I>* node = new Node<N, I>(name, info);
+	Node<N, I>* node = new Node<N, I>(std::move(name), std::move(info));
 	node->_next = this->_head;
 	this->_head = node;
 	_size += 1;
