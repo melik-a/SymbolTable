@@ -1,6 +1,6 @@
 *.vs
 Debug/
-*.vcxproj*
+*.vcxproj.*
 *.sln
 *.obj
 SymbolTable/Debug

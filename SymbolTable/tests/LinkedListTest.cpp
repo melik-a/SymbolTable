@@ -14,7 +14,7 @@ std::ostream& operator << (std::ostream& os, const std::vector<T>& vec)
 }
 
 
-#include "ListTable.h"
+#include "../List/ListTable.h"
 
 void list_int_test();
 void list_string_test();
@@ -23,17 +23,17 @@ void list_vector_test();
 
 void list_test()
 {
-	std::cout << "------ list test begins ------" << std::endl;
+	std::cout << "------ list test start ------" << std::endl;
 	list_int_test();
 	list_string_test();
 	list_vector_test();
-	std::cout << "------ list test is over ------" << std::endl;
+	std::cout << "------ list test end ------" << std::endl;
 }
 
 
 void list_int_test()
 {
-	std::cout << "\n--- list int test begins ---" << std::endl;
+	std::cout << "\n--- list int test start ---" << std::endl;
 
 	LinkedList<int, int> test_list;
 
@@ -106,13 +106,13 @@ void list_int_test()
 	test_list.clear();
 
 
-	std::cout << "\n--- list int test is over ---\n" << std::endl;
+	std::cout << "\n--- list int test end ---\n" << std::endl;
 }
 
 
 void list_string_test()
 {
-	std::cout << "\n--- list string test begins ---" << std::endl;
+	std::cout << "\n--- list string test start ---" << std::endl;
 	
 	LinkedList<std::string, std::string> test_list;
 
@@ -185,13 +185,13 @@ void list_string_test()
 	test_list.clear();
 
 
-	std::cout << "\n--- list string test is over ---" << std::endl;
+	std::cout << "\n--- list string test end ---" << std::endl;
 }
 
 
 void list_vector_test()
 {
-	std::cout << "\n--- list vector test begins ---" << std::endl;
+	std::cout << "\n--- list vector test start ---" << std::endl;
 	
 	using vec_str = std::vector<std::string>;
 	LinkedList<vec_str, vec_str> test_list;
@@ -270,6 +270,6 @@ void list_vector_test()
 	test_list.clear();
 
 
-	std::cout << "\n--- list vector test is over ---" << std::endl;
+	std::cout << "\n--- list vector test end ---" << std::endl;
 }
 

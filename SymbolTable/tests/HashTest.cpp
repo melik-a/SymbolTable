@@ -1,4 +1,4 @@
-#include "Hash.h"
+#include "../HashMap/Hash.h"
 #include <vector>
 
 void hash_test()

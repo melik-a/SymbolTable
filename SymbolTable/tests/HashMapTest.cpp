@@ -1,4 +1,4 @@
-#include "HashMap.h"
+#include "../HashMap/HashMap.h"
 
 void hash_map_general_test()
 {

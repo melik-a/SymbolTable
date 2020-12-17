@@ -193,7 +193,7 @@ void HashMap<K, V, H>::print_all_entries() const
 		std::cout << "\n[ all pairs are empty. there is nothing to print ]" << std::endl;
 		return;
 	}
-	std::cout << "\n{ ";
+	std::cout << "{ ";
 	for (size_t i = 0; i < _size; i++)
 	{
 		if (_mass[i])
@@ -421,17 +421,6 @@ size_t HashMap<K, V, H>::search_pair(K&& key)
 template <typename K, typename V, typename H>
 bool HashMap<K, V, H>::remove_pair(const K& key)
 {
-	/*_last_num_comparisons = 0;
-
-	size_t index = hash(key);
-	_last_num_comparisons++;
-	bool find = (!_mass[index] ? false : _mass[index]->_first == key);
-	for (size_t i = 1; (i < _size) && (!find); i++)
-	{
-		index = simple_rehash(key, i);
-		_last_num_comparisons++;
-		bool find = (!_mass[index] ? false : _mass[index]->_first == key);
-	}*/
 	size_t index = search_pair(key);
 	if (index != _size)
 	{
@@ -446,17 +435,6 @@ bool HashMap<K, V, H>::remove_pair(const K& key)
 template <typename K, typename V, typename H>
 bool HashMap<K, V, H>::remove_pair(K&& key)
 {
-	/*_last_num_comparisons = 0;
-
-	size_t index = hash(key);
-	_last_num_comparisons++;
-	bool find = (!_mass[index] ? false : _mass[index]->_first == key);
-	for (size_t i = 1; (i < _size) && (!find); i++)
-	{
-		index = simple_rehash(key, i);
-		_last_num_comparisons++;
-		bool find = (!_mass[index] ? false : _mass[index]->_first == key);
-	}*/
 	size_t index = search_pair(std::move(key));
 	if (index != _size)
 	{

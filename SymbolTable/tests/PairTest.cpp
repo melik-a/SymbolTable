@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Pair.h"
+#include "../HashMap/Pair.h"
 #include <vector>
 
 template <typename T>

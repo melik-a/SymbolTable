@@ -17,7 +17,7 @@ struct LinkedList
 	}
 
 	void clear() noexcept;
-	void pop_front() noexcept;
+	bool pop_front() noexcept;
 
 	void push_front(const Node<N, I>& new_node);
 	void push_front(Node<N, I>&& new_node);
@@ -212,7 +212,7 @@ void LinkedList<N, I>::push_front(N&& name, I&& info)
 
 
 template <typename N, typename I>
-void LinkedList<N, I>::pop_front() noexcept
+bool LinkedList<N, I>::pop_front() noexcept
 {
 	if (_head)
 	{
@@ -220,10 +220,9 @@ void LinkedList<N, I>::pop_front() noexcept
 		delete _head;
 		_head = new_head;
 		_size -= 1;
-		std::cout << "front element removed successfully" << std::endl;
+		return true;
 	}
-	else
-		std::cout << "list is empty. there is nothing to remove" << std::endl;
+	return false;
 }
 
 
