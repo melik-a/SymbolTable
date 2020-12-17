@@ -1,21 +1,34 @@
 #include <iostream>
 #include "Pair.h"
+#include <vector>
 
-
-void testingConstructors()
+template <typename T>
+std::ostream& operator << (std::ostream& os, const std::vector<T>& vec)
 {
-	std::cout << "start\n";
+	os << " [ ";
+	for (auto& el : vec)
+	{
+		os << el << " ";
+	}
+	os << "] ";
+	return os;
+}
+
+
+void testing_pair()
+{
+	std::cout << "start pair test\n";
 
 	std::string a = "_first_pair_";
 	std::string b = "_second_pair_";
 
 	std::cout << "------------------------------------------------------------------------\n";
 	std::cout << "rvalue constructor\n";
-	const Pair<std::string, std::string> constPair("constFirst", "constSecond");
-	std::cout << "constPair {" << constPair._first << ", " << constPair._second << "}\n";
-	std::cout << "&constPair = " << &constPair << std::endl;
-	std::cout << "\t\t&newPair._first = " << &constPair._first << std::endl;
-	std::cout << "\t\t&newPair._second = " << &constPair._second << std::endl;
+	const Pair<std::string, std::string> const_pair("constFirst", "constSecond");
+	std::cout << "const_pair {" << const_pair._first << ", " << const_pair._second << "}\n";
+	std::cout << "&const_pair = " << &const_pair << std::endl;
+	std::cout << "\t\t&const_pair._first = " << &const_pair._first << std::endl;
+	std::cout << "\t\t&const_pair._second = " << &const_pair._second << std::endl;
 	std::cout << "------------------------------------------------------------------------\n";
 
 	std::cout << "lavalue constructor\n";
@@ -24,19 +37,33 @@ void testingConstructors()
 	std::cout << "&pair = " << &pair << std::endl;
 	std::cout << "------------------------------------------------------------------------\n";
 
-	std::cout << "pair constructor by const pair\n";
-	Pair<std::string, std::string> newPair(constPair);
-	std::cout << "newPair {" << newPair._first << ", " << newPair._second << "}\n";
-	std::cout << "&newPair = " << &newPair << std::endl;
+	std::cout << "pair constructor by lvalue pair\n";
+	Pair<std::string, std::string> new_pair(const_pair);
+	std::cout << "new_pair {" << new_pair._first << ", " << new_pair._second << "}\n";
+	std::cout << "&new_pair = " << &new_pair << std::endl;
+	std::cout << "------------------------------------------------------------------------\n";
+
+	std::cout << "pair constructor by rvalue pair\n";
+	Pair<std::string, std::string> rvalue_pair(std::move(Pair<std::string, std::string>("hey", "there")));
+	std::cout << "rvalue_pair {" << rvalue_pair._first << ", " << rvalue_pair._second << "}\n";
+	std::cout << "&rvalue_pair = " << &rvalue_pair << std::endl;
+	std::cout << "------------------------------------------------------------------------\n";
+
+	Pair<int, int> default_constr;
+	std::cout << "&default_constr = " << &default_constr << std::endl;
+	std::cout << "default_constr {" << default_constr._first << ", " << default_constr._second << "}\n";
+	std::cout << "------------------------------------------------------------------------\n";
+
+	Pair<std::vector<std::string>, std::vector<std::string>> move_assignment;
+	move_assignment = Pair<std::vector<std::string>, std::vector<std::string>>({ "move", "assignment" }, {"move_", "assignment_"});
+	std::cout << "&move_assignment = " << &move_assignment << std::endl;
+	std::cout << "move_assignment {" << move_assignment._first << ", " << move_assignment._second << "}\n";
 	std::cout << "------------------------------------------------------------------------\n";
 
 
-	Pair<int, int> defaultConstr;
-	std::cout << "&defaultConstr" << &defaultConstr << std::endl;
-	std::cout << "defaultConstr {" << defaultConstr._first << ", " << defaultConstr._second << "}\n";
+	Pair<> zero_arg;
+	std::cout << "&zero_arg = " << &zero_arg << std::endl;
+	std::cout << "zero_arg {" << zero_arg._first << ", " << zero_arg._second << "}\n";
 	std::cout << "------------------------------------------------------------------------\n";
-	std::cout << "end\n";
-
-	Pair<> zeroArg;
-	zeroArg.getPair();
+	std::cout << "end pair test\n";
 }

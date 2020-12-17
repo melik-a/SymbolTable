@@ -19,9 +19,18 @@ struct Pair
 	Pair(F&& first, S&& second) :
 		_first(first), _second(second) {}
 
-	void getPair()
+	Pair(Pair<F, S>&& pair_el) noexcept :
+		_first(std::move(pair_el._first)), _second(std::move(pair_el._second)) {}
+	
+	Pair<F, S>& operator = (Pair<F, S>&& pair_el) noexcept
 	{
-		std::cout << "first = " << this->_first << "\nsecond = " << this->_second << std::endl;
+		if (this != &pair_el)
+		{
+			_first = std::move(pair_el._first);
+			_second = std::move(pair_el._second);
+		}
+		return *this;
 	}
 
+	~Pair() {}
 };
